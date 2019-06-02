@@ -16,6 +16,8 @@ namespace MyList
             nums.Add(6);
             nums.Add(7);
             nums.Add(8);
+
+            nums.Insert(2, 5);
             foreach (var num in nums)
             {
                 Console.WriteLine(num);

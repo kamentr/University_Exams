@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyList
 {
-    class MyList<T> : IList<T> , IEnumerable
+    public class MyList<T> : IList<T>
     {
         public T this[int index] { get => Getter(index); set => array[index] = value; }
 
@@ -25,7 +25,7 @@ namespace MyList
 
         public int Count => size;
 
-        public bool IsReadOnly => false;
+        public bool IsReadOnly => array.IsReadOnly;
 
         private T[] array;
 
@@ -59,6 +59,7 @@ namespace MyList
 
         public void Clear()
         {
+            array = new T[4];
             size = 0;
         }
 
@@ -70,11 +71,6 @@ namespace MyList
         public void CopyTo(T[] array, int arrayIndex)
         {
             Array.Copy(this.array, arrayIndex, array, 0, this.array.Length - arrayIndex - 1);
-        }
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            return new IEnumerator<T>(array);
         }
 
         public int IndexOf(T item)
@@ -130,14 +126,17 @@ namespace MyList
             Remove(item);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
-            return (IEnumerator)GetEnumerator();
+            for (int i = 0; i < Count; i++)
+            {
+                yield return array[i];
+            }
         }
 
-        System.Collections.Generic.IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IList<T>)array).GetEnumerator();
+            return GetEnumerator();
         }
     }
 }
