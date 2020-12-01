@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BTC Scammers\' Wallets</string>
+    <string name="tab_check_address">Look up</string>
+    <string name="tab_history">History</string>
+    <string name="wallet_address_input_text">Write wallet address here…</string>
+    <string name="check_button_text">Check</string>
+    <string name="general_info_text">General Info</string>
+    <string name="scam_meter">Scam Meter</string>
+    <string name="refresh_button">Refresh button</string>
+    <string name="DELETE_PROMT_MESSAGE">Do you really want to remove this account from history?</string>
+    <string name="DELETE_TITLE_MESSAGE">Delete this account</string>
+    <string name="invalid_address">This address is invalid</string>
+</resources>
